@@ -1,0 +1,65 @@
+/*初始化*/
+@aColor:#fff;
+@color:#323232;
+@fz:100rem;
+.bg(@addr,@x,@y,@w,@h){
+	background:url("../img/@{addr}") no-repeat @x @y ~"/" @w @h;
+}
+body,header,section,nav,footer,article,div,h1,h2,h3,h4,form,p,dl,dt,dd,ul,li,span,a,em,i,strong,b,img{ margin:0; padding:0; -ms-touch-action: none;/*去除ie默认触屏动作*/ box-sizing: border-box;/*怪异盒子模型*/}
+i,em{ font-style: normal;}
+a{ 
+	text-decoration: none; color: @aColor;
+	&:hover{color: @aColor;}
+}
+input,textarea,select{outline: none; font-size:34/@fz; font-family: "黑体";}
+input[type="button"],input[type="submit"],button{ -webkit-appearance: none;/*去除ip按钮渐变*/}
+img{ border:0 none; vertical-align: top;}
+li{ list-style: none;}
+html{ font-size:625%;/*100%即16px，625%即100px*/}
+body{ max-width:750px; min-width:320px; margin:0 auto; background:#f0f0f0; font-family: "黑体"; font-size:34/@fz; color:@color;}
+.clearfix:after{
+	content:".";display: block; visibility: hidden; clear: both; height:0;font-size:0;
+}
+/*主要*/
+.header{ display:flex; width: 100%; height:98/@fz; margin-top: 20px; background:#f9f9f9; border:#dddddd 1/@fz solid; padding-top: 10/@fz;
+	label{ flex:174; padding-left:20/@fz; height:78/@fz; line-height: 78/@fz; color:#969696; border-right: #ddd 1px solid;}
+	input{ flex:502; margin-left: 72/@fz; height:78/@fz; border:0; background:none;color:@color; font-size:34/@fz;}
+}
+.list{ display:flex; flex-flow:row wrap; width:100%; 
+	.list-money{ display:flex; position:relative; width:222/@fz; height:130/@fz; overflow: hidden; margin: 20/@fz 0 0 20/@fz;
+		input{ position:absolute; left: -100%; top:-100%; opacity: 0;
+			&:checked + i{
+				border-color:#1a96d5; color:#1a96d5;
+			}
+		}
+		i{ flex:1; border:#dddddd 1/@fz solid; background:#f9f9f9; border-radius: 8/@fz; display:flex; align-items:center;/*垂直居中*/ justify-content:center; font-size:38/@fz; color:#c8c8c8;}
+	}
+}
+.choise-money{ height:72/@fz; line-height:72/@fz; background:#f9f9f9; border:#ddd 1/@fz solid; margin-top:42/@fz; padding-left:22/@fz;}
+.choise-money-val{height:112/@fz; padding-left:22/@fz; background:#f9f9f9; border:#ddd 1/@fz solid; border-top: 0;
+	dt{ line-height:66/@fz;
+		span{display:inline-block; height:30/@fz; line-height:30/@fz; margin-left:9/@fz; color:#969696; font-size:22/@fz; text-decoration:line-through; border-left: #ddd 1/@fz solid; padding-left: 11/@fz; vertical-align:middle;}
+	}
+	dd{ line-height:26/@fz; color:#969696; font-size:22/@fz;}
+}
+.srue-toBuy{ display:block; margin:57/@fz auto 0; width:711/@fz; height:80/@fz; text-align: center; line-height:80/@fz; background:#ef8200; border-radius:10/@fz; color:#fff; border:0;}
+
+.fixed-pay{position:fixed; left:0; width:100%; height:100%;background:rgba(0,0,0,0.4);}
+.fixed-pay-main{position:absolute; left:0; bottom: 0; transition:bottom 0.2s; width:100%; height:percentage(824/1206);  background:#fafafa;}
+.fixed-pay-top{ display:flex; border-bottom: #ddd 1px solid; height:98/@fz; line-height:98/@fz;
+	.close{ width:70/@fz; position:relative;
+		&:before,&:after{ content:""; position:absolute; left:21/@fz; top:47/@fz; height:4/@fz; width:25/@fz; background:#969696; border-radius:4/@fz; transform-origin:0 50%;}
+		&:before{transform:rotate(-40deg);}
+		&:after{transform:rotate(40deg);}
+	}
+	.title{ flex:1; padding-left:180/@fz; font-weight: 500;}
+}
+.fixed-pay-money{ font-size:62/@fz; line-height:93/@fz; font-family:"微软雅黑"; text-align:center;}
+.fixed-pay-input{ position:relative; display:flex; justify-content:space-between; width:711/@fz; height:98/@fz; margin:0 auto; border:#ddd 1/@fz solid; border-radius:10/@fz;
+	input{ position:absolute; left:0; top:0; border:0; width:100%; height:100%; background:none; opacity:0; }
+	i{ flex:1; display:flex; justify-content:center; align-items:center; border-right:#ddd 1px solid;
+		&:last-child{ border:0;}
+	}
+	.cur:after{ content:""; width:24/@fz; height:24/@fz; background:#000; border-radius:50%;}
+}
+.fixed-account{padding-left:19/@fz; line-height:62/@fz; color:#969696; font-size:28/@fz;}

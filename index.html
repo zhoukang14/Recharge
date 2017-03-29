@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalabel=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>充值</title>
+	<script src="js/fontAuto.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<section  class="header">
+		<label>手机号</label>
+		<input type="text" value="139 9081 6753">
+	</section>
+	<section class="list">
+		<label class="list-money"><input checked="checked" type="radio" name="money" value="1"><i>2M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="5"><i>10M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="10"><i>30M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="20"><i>70M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="30"><i>500M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="40"><i>700M</i></label>
+		<label class="list-money"><input type="radio" name="money" value="50"><i>1G</i></label>
+	</section>
+	<section class="choise-money">2M流量</section>
+	<dl class="choise-money-val">
+		<dt>1元<span>2元</span></dt>
+		<dd>全国可用，即时生效，当月有效，每月限充10次。</dd>
+	</dl>
+	<input class="srue-toBuy" type="button" value="购买" />
+
+	<section class="fixed-pay" style="bottom:-100%;">
+		<section class="fixed-pay-main" style="bottom: -100%;">
+			<section class="fixed-pay-top">
+				<span class="close"></span>
+				<h3 class="title">请输入支付密码</h3>
+			</section>
+			<section class="fixed-pay-money">￥29.88</section>
+			<section class="fixed-pay-input">
+				<input type="password">
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+			</section>
+			<section class="fixed-account">账户余额：1525.00元</section>
+		</section>
+	</section>
+
+	<script>
+		var inputsMoneyNode=document.querySelectorAll('input[name="money"]');
+		var choiseMoneyValNode=document.querySelector('.choise-money-val dt');
+		var choiseMoneyNode=document.querySelector('.choise-money');
+		//console.log(inputsMoneyNode);
+		
+		for(var i=0;i<inputsMoneyNode.length;i++){//对所有单选框监听一个单击事件
+			inputsMoneyNode[i].onclick=function(){
+				var val=this.value;//得到单选框的值
+				var iNode=this.parentNode.querySelector("i");//得到i标签
+				var iVal=iNode.innerHTML;//得到i中的值
+
+				choiseMoneyNode.innerHTML=iVal+"流量";
+				choiseMoneyValNode.innerHTML=val+"元<span>"+2*val+"元</span>";//写入值
+			}
+		}
+
+
+		var srueToBuyNode=document.querySelector(".srue-toBuy");
+		var fixedPayNode=document.querySelector(".fixed-pay");
+		var fixedPayMainNode=document.querySelector(".fixed-pay-main");
+		srueToBuyNode.onclick=function(){
+			fixedPayNode.style.bottom="0px";
+			fixedPayMainNode.style.bottom="0px";
+		}
+
+		var closeNode=document.querySelector(".close");
+		closeNode.onclick=function(){
+			fixedPayMainNode.style.bottom="-100%";
+			fixedPayNode.style.bottom="-100%";
+		}
+
+
+		var passwordNode=document.querySelector('input[type="password"]');
+		var fixedPayInputIsNode=document.querySelectorAll('.fixed-pay-input i');
+		passwordNode.oninput=innputWord;
+		function innputWord(val){//当你输入完成时触发函数
+			var val=this.value?this.value:val;
+			var len=val.length;
+			for(var i=0;i<fixedPayInputIsNode.length;i++){
+				fixedPayInputIsNode[i].className='';
+			}
+
+			if(len<=6)
+			{
+				for(var i=0;i<len;i++){
+					fixedPayInputIsNode[i].className='cur';
+				}
+			}
+			else{
+				val=this.value.slice(0,6);
+				this.value=val;
+				innputWord(val);
+			}
+		}
+	</script>
+</body>
+</html>
